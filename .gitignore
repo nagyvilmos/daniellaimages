@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 Scripts
 client/node_modules
+client/public/images

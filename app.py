@@ -1,6 +1,6 @@
 # Copyright (c) Daniella Norman-Walker. All rights reserved.
-
-from flask import Flask, send_from_directory
+import os
+from flask import Flask, send_from_directory, json
 
 app = Flask(__name__)
 
@@ -12,6 +12,14 @@ All routing is client side, and so we just serve up the app.
 @app.route("/<path:path>")
 def home(path = None):
     return send_from_directory('client/public', 'index.html')
+
+"""
+Query which images are available
+"""
+@app.route("/api/images")
+def api_images():
+    #os.listdir('resource/client/public')
+    return json.jsonify(os.listdir('client/public/images'))
 
 """
 Path for all the static files (compiled JS/CSS, etc.)
