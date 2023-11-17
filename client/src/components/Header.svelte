@@ -1,12 +1,14 @@
 <script>
-
+    export let show
+    console.log(show)
 </script>
 
 <div class="header">
     <h2>
-        <span class="content base">Daniella's Snaps</span>
-        <span class="content base">Contact me</span>
-        <span class="content base">About</span>
+        <span class="content">Daniella's Snaps</span>
+        <span class="content">Contact me</span>
+        <span class="content">About</span>
+        <span class={show ? "show content" : "content"}>Random Show</span>
     </h2>
 </div>
 
@@ -21,6 +23,9 @@
         background: transparent;
     }
 
+    .show {
+        background-color: aqua;
+    }
     .content {
         padding: 4px;
         border-width: 2px;

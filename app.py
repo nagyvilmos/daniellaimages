@@ -19,7 +19,9 @@ Query which images are available
 @app.route("/api/images")
 def api_images():
     #os.listdir('resource/client/public')
-    return json.jsonify(os.listdir('client/public/images'))
+    #return json.jsonify(os.listdir('client/public/images'))
+    return send_from_directory('client/public/data', 'meta.json')
+
 
 """
 Path for all the static files (compiled JS/CSS, etc.)

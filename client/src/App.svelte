@@ -55,11 +55,16 @@
     }
   }
 
+  let show = true;
   let selected = undefined;
+
+  const setSelected = (image) => {
+    selected = selected !== image ? image : undefined;
+  };
 </script>
 
 <ThemeContext>
-  <Page>
+  <Page show={show}>
     {#await fetchData()}
       <p>loading</p>
     {:then images}
@@ -68,18 +73,11 @@
         <Image
           {image}
           large={selected === image}
-          on:click={() => (selected = image)}
+          on:click={() => setSelected(image)}
         />
       {/each}
     {:catch error}
       <p style="color: red">{error.message}</p>
     {/await}
-    <p>
-      This is a work in progress, using a set of images from <a
-        href="https://picsum.photos">picsum.photos</a
-      >
-      to test the layout and flow of the design. Click an image and
-      <em>"Boom!"</em> see what happens!
-    </p>
   </Page>
 </ThemeContext>
